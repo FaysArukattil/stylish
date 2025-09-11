@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/core/constants/imageconstants.dart';
+import 'package:stylish/view/onboardingscreen/onboardingscreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -9,6 +11,18 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  @override
+  void initState() {
+    Future.delayed(Duration(seconds: 3)).then((_) {
+      Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
+        context,
+        MaterialPageRoute(builder: (context) => Onboardingscreen()),
+      );
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +36,7 @@ class _SplashscreenState extends State<Splashscreen> {
               "Stylish",
               style: TextStyle(
                 fontSize: 40,
-                color: Color(0xffF83758),
-
+                color: Colorconstants.primary,
                 fontWeight: FontWeight.bold,
               ),
             ),
