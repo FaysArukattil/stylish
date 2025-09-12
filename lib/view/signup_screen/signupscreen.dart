@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/core/constants/imageconstants.dart';
-import 'package:stylish/view/forgot_screen/forgotscreen.dart';
 import 'package:stylish/view/global_widgets/custom_elevatedbutton.dart';
 import 'package:stylish/view/global_widgets/custom_textfield.dart';
 import 'package:stylish/view/global_widgets/socialbutton.dart';
-import 'package:stylish/view/signup_screen/signupscreen.dart';
+import 'package:stylish/view/signin_screen/signinscreen.dart';
 
-class Signinscreen extends StatefulWidget {
-  const Signinscreen({super.key});
+class Signupscreen extends StatefulWidget {
+  const Signupscreen({super.key});
 
   @override
-  State<Signinscreen> createState() => _SigninscreenState();
+  State<Signupscreen> createState() => _SigninscrupSignupscreen();
 }
 
-class _SigninscreenState extends State<Signinscreen> {
+class _SigninscrupSignupscreen extends State<Signupscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class _SigninscreenState extends State<Signinscreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Welcome\n back!",
+                "Create An \n account!",
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 36),
@@ -39,29 +38,37 @@ class _SigninscreenState extends State<Signinscreen> {
                 icon: Icons.lock,
                 obscureText: true,
                 suffixIcon: Icon(Icons.visibility),
-                bottompadding: 9,
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ForgotScreen()),
-                    );
-                  },
-                  child: Text(
-                    "Forgot password?",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colorconstants.primary,
+              CustomTextfield(
+                hint: "Confirm Password",
+                icon: Icons.lock,
+                obscureText: true,
+                suffixIcon: Icon(Icons.visibility),
+                bottompadding: 19,
+              ),
+              RichText(
+                textAlign: TextAlign.left,
+                text: TextSpan(
+                  text: "By clicking the ",
+                  style: const TextStyle(fontSize: 14, color: Colors.black87),
+                  children: [
+                    TextSpan(
+                      text: "Register",
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    const TextSpan(
+                      style: TextStyle(fontSize: 12),
+                      text: " button you agree\nto the public offer",
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 54),
-              CustomElevatedButton(text: "Login"),
-              SizedBox(height: 77),
+              SizedBox(height: 38),
+              CustomElevatedButton(text: "Created Account"),
+              SizedBox(height: 40),
 
               Align(
                 alignment: Alignment.center,
@@ -95,18 +102,18 @@ class _SigninscreenState extends State<Signinscreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Create an Account ",
+                    "I Already have an Account ",
                     style: TextStyle(fontSize: 14, color: Colors.black),
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => Signupscreen()),
+                        MaterialPageRoute(builder: (_) => Signinscreen()),
                       );
                     },
                     child: Text(
-                      " Sign Up",
+                      " Login",
                       style: TextStyle(
                         fontSize: 14,
                         color: Colorconstants.primary,
