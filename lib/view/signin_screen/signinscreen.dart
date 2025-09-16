@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/core/constants/imageconstants.dart';
 import 'package:stylish/view/forgot_screen/forgotscreen.dart';
+import 'package:stylish/view/get_started_screen/getstartedscreen.dart';
 import 'package:stylish/view/global_widgets/custom_elevatedbutton.dart';
 import 'package:stylish/view/global_widgets/custom_textfield.dart';
 import 'package:stylish/view/global_widgets/socialbutton.dart';
-import 'package:stylish/view/home_screen/homescreen.dart';
 import 'package:stylish/view/signup_screen/signupscreen.dart';
 
 class Signinscreen extends StatefulWidget {
@@ -100,7 +100,9 @@ class _SigninscreenState extends State<Signinscreen> {
                     if (isUserNameValid && isPasswordValid) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Homescreen()),
+                        MaterialPageRoute(
+                          builder: (context) => Getstartedscreen(),
+                        ),
                       );
                     }
                   },
