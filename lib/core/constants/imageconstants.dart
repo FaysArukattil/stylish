@@ -13,4 +13,5 @@ class Imageconstants {
   static const String kids = 'assets/images/kids.png';
   static const String mens = 'assets/images/Mens.png';
   static const String women = 'assets/images/Womens.png';
+  static const String carouselimage1 = 'assets/images/offerCarousalimage1.png';
 }

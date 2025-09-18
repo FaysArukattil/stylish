@@ -13,7 +13,7 @@ class Bottomnavbarscreen extends StatefulWidget {
 
 class _BottomnavbarscreenState extends State<Bottomnavbarscreen> {
   List screens = [
-    Homescreen(),
+    HomeScreen(),
     Wishlistscreen(),
     Searchscreen(),
     Settingscreen(),

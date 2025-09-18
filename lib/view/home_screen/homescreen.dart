@@ -1,140 +1,205 @@
+// ignore_for_file: avoid_print
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/core/constants/imageconstants.dart';
+import 'package:stylish/model/home_screen_model/category_model.dart';
+import 'package:stylish/view/global_widgets/filtercard.dart';
+import 'package:stylish/view/home_screen/widgets/categorywidget.dart';
 
-class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Homescreen> createState() => _HomescreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomescreenState extends State<Homescreen> {
-  final List<Map<String, String>> stories = [
-    {'text': "Beauty", 'image': Imageconstants.beauty},
-    {'text': "Fashion", 'image': Imageconstants.fashion},
-    {'text': "Kids", 'image': Imageconstants.kids},
-    {'text': "Mens", 'image': Imageconstants.mens},
-    {'text': "Womens", 'image': Imageconstants.women},
-    {'text': "Beauty", 'image': Imageconstants.beauty},
-  ];
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: Colorconstants.scaffoldbg,
+      appBar: AppBar(
+        centerTitle: true,
+        leading: Center(
+          child: CircleAvatar(
+            backgroundColor: Colorconstants.white,
+            radius: 16,
+            child: Icon(Icons.menu, size: 18),
+          ),
+        ),
+        title: Row(
+          spacing: 9,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(Imageconstants.appLogo, height: 30),
+            Text(
+              'Stylish',
+              style: GoogleFonts.libreCaslonText(
+                color: Colorconstants.secondary,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage(Imageconstants.profilelogo),
+          ),
+          SizedBox(width: 12),
+        ],
+      ),
+      body: Column(
+        children: [
+          //1----SEARCH SECTION
+          _buildSearchSection(),
+
+          // category and filter section
+          _buildCategoryAndFilterSection(),
+
+          //Carousel
+          _buildCarouselSection(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCarouselSection() {
+    List<String> imageurl = [
+      Imageconstants.carouselimage1,
+      Imageconstants.carouselimage1,
+      Imageconstants.carouselimage1,
+    ];
+
+    return Column(
+      children: [
+        CarouselSlider(
+          items: List.generate(
+            imageurl.length,
+            (index) => Container(
+              width: 343,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: AssetImage(imageurl[index]),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          options: CarouselOptions(
+            height: 189,
+            // aspectRatio: 16/9,
+            viewportFraction: 1,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 3),
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
+            enlargeFactor: 0.3,
+            onPageChanged: (index, reason) {
+              currentIndex = index;
+              setState(() {});
+              print(index);
+              print(reason.name);
+            },
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+        SizedBox(height: 12),
+        AnimatedSmoothIndicator(
+          activeIndex: currentIndex,
+          count: imageurl.length,
+          effect: JumpingDotEffect(dotWidth: 9, dotHeight: 9),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSearchSection() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextField(
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+          hintText: "Search any Product..",
+          hintStyle: TextStyle(color: Colorconstants.grey1),
+          suffixIcon: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.mic_none_rounded, color: Colorconstants.grey1),
+          ),
+          prefixIcon: Icon(Icons.search, color: Colorconstants.grey1),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryAndFilterSection() {
+    List<CategoryModel> categoryList = [
+      CategoryModel(imageurl: "assets/images/Beauty.png", categories: "Beauty"),
+      CategoryModel(
+        imageurl: "assets/images/fashion.png",
+        categories: "Fashion",
+      ),
+      CategoryModel(imageurl: "assets/images/kids.png", categories: "kids"),
+      CategoryModel(imageurl: "assets/images/Mens.png", categories: "Mens"),
+      CategoryModel(imageurl: "assets/images/Womens.png", categories: "Womens"),
+      CategoryModel(
+        imageurl: "assets/images/fashion.png",
+        categories: "Jackets",
+      ),
+    ];
+
+    return Column(
+      spacing: 16,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22.0),
+          child: Row(
             children: [
-              /// ---------- TOP BAR ----------
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(Icons.menu, size: 28),
-                    Row(
-                      children: [
-                        Image.asset(Imageconstants.appLogo, width: 34),
-                        const SizedBox(width: 6),
-                        Text(
-                          "Stylish",
-                          style: TextStyle(
-                            color: Colorconstants.blue,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                    CircleAvatar(
-                      radius: 18,
-                      backgroundImage: const AssetImage(
-                        'assets/images/profileicon.png',
-                      ),
-                    ),
-                  ],
+              Text(
+                "All Featured",
+                style: GoogleFonts.montserrat(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-
-              /// ---------- SEARCH BAR ----------
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        child: Icon(Icons.search, color: Colors.grey),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Search Product",
-                            hintStyle: TextStyle(color: Colors.grey.shade600),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        child: Icon(Icons.mic_none, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              /// ---------- STORIES ----------
-              SizedBox(
-                height: 95,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: stories.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 12),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.grey.shade300),
-                            ),
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(
-                                stories[index]['image']!,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            stories[index]['text']!,
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
+              Spacer(),
+              FilterCard(text: "Sort", iconData: Icons.swap_vert),
+              SizedBox(width: 20),
+              FilterCard(text: "Filter", iconData: Icons.filter_alt_outlined),
             ],
           ),
         ),
-      ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22),
+            child: Row(
+              spacing: 16,
+              children: List.generate(
+                categoryList.length,
+                (index) => CategoryWidget(
+                  imgePath: categoryList[index].imageurl,
+                  category: categoryList[index].categories,
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 16),
+      ],
     );
   }
 }
