@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/view/home_screen/homescreen.dart';
 import 'package:stylish/view/search_screen/searchscreen.dart';
 import 'package:stylish/view/settings_screen/settingscreen.dart';
@@ -12,32 +13,33 @@ class Bottomnavbarscreen extends StatefulWidget {
 }
 
 class _BottomnavbarscreenState extends State<Bottomnavbarscreen> {
-  List screens = [
-    HomeScreen(),
-    Wishlistscreen(),
-    Searchscreen(),
-    Settingscreen(),
-  ];
   int curentIndex = 0;
+
+  // ✅ Properly typed list of screens
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const Wishlistscreen(),
+    const Searchscreen(),
+    const Settingscreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: screens[curentIndex],
+      body: IndexedStack(index: curentIndex, children: screens),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(50),
-        ),
-        child: Icon(Icons.shopping_cart_outlined),
+        shape: const CircleBorder(),
+        child: const Icon(Icons.shopping_cart_outlined),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (value) {
-          curentIndex = value;
-          setState(() {});
-        },
+        currentIndex: curentIndex,
+        selectedItemColor: Colorconstants.primary, // ✅ Highlight color
+        unselectedItemColor: Colors.grey, // Optional: grey for unselected
+        onTap: (value) => setState(() => curentIndex = value),
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'home',

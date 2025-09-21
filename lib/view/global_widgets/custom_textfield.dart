@@ -4,7 +4,7 @@ class CustomTextfield extends StatelessWidget {
   const CustomTextfield({
     super.key,
     required this.hint,
-    required this.icon,
+    this.icon, // ✅ make optional
     this.controller,
     this.validator,
     this.suffixIcon,
@@ -14,7 +14,7 @@ class CustomTextfield extends StatelessWidget {
   });
 
   final String hint;
-  final IconData icon;
+  final IconData? icon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
@@ -35,6 +35,7 @@ class CustomTextfield extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hint,
             filled: true,
+            // ✅ Keep your border styling
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: Color(0xffA8A8A9)),
@@ -55,7 +56,10 @@ class CustomTextfield extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: Colors.red),
             ),
-            prefixIcon: Icon(icon, size: 24, color: const Color(0xff626262)),
+            // ✅ Only show prefixIcon if icon is provided
+            prefixIcon: icon != null
+                ? Icon(icon, size: 24, color: const Color(0xff626262))
+                : null,
             suffixIcon: suffixIcon,
           ),
         ),
