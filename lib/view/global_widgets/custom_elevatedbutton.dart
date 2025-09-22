@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key, required this.text, this.onTap});
+  const CustomElevatedButton({
+    super.key,
+    required this.text,
+    this.onTap,
+    required Null Function() onPressed,
+  });
   final String text;
   final Function()? onTap;
   @override

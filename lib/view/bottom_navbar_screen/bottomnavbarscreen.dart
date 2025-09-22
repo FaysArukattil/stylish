@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
+import 'package:stylish/view/checkout_screen/checkoutscreen.dart';
 import 'package:stylish/view/home_screen/homescreen.dart';
 import 'package:stylish/view/search_screen/searchscreen.dart';
 import 'package:stylish/view/settings_screen/settingscreen.dart';
@@ -29,7 +30,14 @@ class _BottomnavbarscreenState extends State<Bottomnavbarscreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: IndexedStack(index: curentIndex, children: screens),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Checkoutscreen(cartItems: []),
+            ),
+          );
+        },
         shape: const CircleBorder(),
         child: const Icon(Icons.shopping_cart_outlined),
       ),

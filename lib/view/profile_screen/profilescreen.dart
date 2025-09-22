@@ -107,6 +107,7 @@ class Profilescreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
+              onPressed: () {},
             ),
           ],
         ),

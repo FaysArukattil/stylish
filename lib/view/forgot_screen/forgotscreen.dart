@@ -50,7 +50,7 @@ class ForgotScreenState extends State<ForgotScreen> {
                 ],
               ),
               SizedBox(height: 24),
-              CustomElevatedButton(text: "Submit"),
+              CustomElevatedButton(text: "Submit", onPressed: () {}),
             ],
           ),
         ),

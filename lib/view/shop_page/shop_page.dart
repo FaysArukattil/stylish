@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stylish/core/cart/cartmanager.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/view/global_widgets/filtercard.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:stylish/view/checkout_screen/checkoutscreen.dart';
 
 class ShopPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -349,7 +351,7 @@ class _ShopPageState extends State<ShopPage> {
 
             const SizedBox(height: 20),
 
-            // Go to Cart & Buy Now Buttons with CircleAvatar
+            // Add to Cart & Buy Now Buttons with CircleAvatar
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
@@ -357,13 +359,11 @@ class _ShopPageState extends State<ShopPage> {
               ),
               child: Row(
                 children: [
-                  // Cart Button
+                  // Add to Cart Button
                   Flexible(
                     fit: FlexFit.tight,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 16,
-                      ), // space for avatar
+                      padding: const EdgeInsets.only(left: 16),
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
@@ -375,10 +375,19 @@ class _ShopPageState extends State<ShopPage> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              CartManager.addToCart(widget.product, size: '');
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Item added to cart"),
+                                  duration: Duration(seconds: 1),
+                                ),
+                              );
+                            },
                             child: Center(
                               child: Text(
-                                "  Go to Cart",
+                                "Add to Cart",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -388,7 +397,7 @@ class _ShopPageState extends State<ShopPage> {
                             ),
                           ),
                           Positioned(
-                            left: -20, // slightly outside button
+                            left: -20,
                             top: 0,
                             bottom: 0,
                             child: CircleAvatar(
@@ -409,9 +418,7 @@ class _ShopPageState extends State<ShopPage> {
                   Flexible(
                     fit: FlexFit.tight,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 16,
-                      ), // space for avatar
+                      padding: const EdgeInsets.only(left: 16),
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
@@ -423,7 +430,17 @@ class _ShopPageState extends State<ShopPage> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              CartManager.addToCart(widget.product, size: '');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Checkoutscreen(
+                                    cartItems: CartManager.cartItems,
+                                  ),
+                                ),
+                              );
+                            },
                             child: Center(
                               child: Text(
                                 "Buy Now",
@@ -455,7 +472,7 @@ class _ShopPageState extends State<ShopPage> {
 
             const SizedBox(height: 20),
 
-            // Similar Products Grid
+            // Similar Products Grid (unchanged)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Row(

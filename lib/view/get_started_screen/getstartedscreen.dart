@@ -67,6 +67,7 @@ class Getstartedscreen extends StatelessWidget {
                       ),
                     );
                   },
+                  onPressed: () {},
                 ),
                 SizedBox(height: 34),
               ],
