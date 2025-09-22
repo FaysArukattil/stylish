@@ -5,10 +5,9 @@ import 'package:stylish/view/global_widgets/custom_elevatedbutton.dart';
 import 'package:stylish/view/place%20order/placeorder.dart';
 
 class Checkoutscreen extends StatefulWidget {
-  const Checkoutscreen({
-    super.key,
-    required List<Map<String, dynamic>> cartItems,
-  });
+  final List<Map<String, dynamic>> cartItems;
+
+  const Checkoutscreen({super.key, required this.cartItems});
 
   @override
   State<Checkoutscreen> createState() => _CheckoutscreenState();
@@ -49,8 +48,8 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Row(
+                      children: [
+                        const Row(
                           children: [
                             Icon(Icons.location_on, color: Colors.redAccent),
                             SizedBox(width: 6),
@@ -63,10 +62,41 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          "216 St Paul’s Rd, London N1 2LL, UK\nContact: +44-784232",
-                          style: TextStyle(fontSize: 14, color: Colors.black87),
+                        const SizedBox(height: 8),
+                        // List of addresses with selection
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: CartManager.addresses.length,
+                          itemBuilder: (context, index) {
+                            final address = CartManager.addresses[index];
+                            return RadioListTile<int>(
+                              value: index,
+                              groupValue: CartManager.addresses.indexOf(
+                                CartManager.selectedAddress,
+                              ),
+                              title: Text(address),
+                              onChanged: (value) {
+                                setState(() {
+                                  CartManager.selectAddress(value!);
+                                });
+                              },
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton.icon(
+                            onPressed: () {
+                              _showAddAddressModal(context);
+                            },
+                            icon: const Icon(Icons.add, color: Colors.blue),
+                            label: const Text(
+                              "Add New Address",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -181,7 +211,7 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                       ),
                       const SizedBox(height: 10),
                       CustomElevatedButton(
-                        text: "Place Order",
+                        text: "Proceed",
                         onTap: () {
                           Navigator.push(
                             context,
@@ -197,6 +227,48 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                 ),
               ],
             ),
+    );
+  }
+
+  void _showAddAddressModal(BuildContext context) {
+    final TextEditingController _newAddressController = TextEditingController();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(ctx).viewInsets.bottom,
+          left: 16,
+          right: 16,
+          top: 16,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _newAddressController,
+              maxLines: 3,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter new delivery address",
+              ),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                if (_newAddressController.text.trim().isNotEmpty) {
+                  setState(() {
+                    CartManager.addAddress(_newAddressController.text.trim());
+                  });
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text("Save Address"),
+            ),
+            const SizedBox(height: 10),
+          ],
+        ),
+      ),
     );
   }
 }

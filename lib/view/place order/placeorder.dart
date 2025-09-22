@@ -86,6 +86,7 @@ class Placeorder extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 6),
+                            // Show synced size
                             Text(
                               "Size: ${item['size']} | Qty: ${item['quantity']}",
                               style: GoogleFonts.montserrat(fontSize: 13),

@@ -22,6 +22,15 @@ class _ShopPageState extends State<ShopPage> {
   final List<String> sizes = ["6 UK", "7 UK", "8 UK", "9 UK", "10 UK"];
   late PageController _pageController;
 
+  // UK to Display Size Mapping
+  final Map<String, String> ukToSizeMap = {
+    "6 UK": "Small",
+    "7 UK": "Medium",
+    "8 UK": "Large",
+    "9 UK": "XL",
+    "10 UK": "XXL",
+  };
+
   @override
   void initState() {
     super.initState();
@@ -165,6 +174,23 @@ class _ShopPageState extends State<ShopPage> {
                     onSelected: (selected) {
                       setState(() {
                         selectedSizeIndex = index;
+
+                        // Update CartManager size if item already exists
+                        final productId =
+                            "${widget.product['id'] ?? widget.product['title']}_${ukToSizeMap[sizes[index]]}";
+                        final existingItem = CartManager.cartItems.firstWhere(
+                          (item) =>
+                              item['title'] == widget.product['title'] &&
+                              item['id'] != productId,
+                          orElse: () => {},
+                        );
+
+                        if (existingItem.isNotEmpty) {
+                          CartManager.updateSize(
+                            existingItem['id'],
+                            ukToSizeMap[sizes[index]]!,
+                          );
+                        }
                       });
                     },
                     selectedColor: Colorconstants.primary,
@@ -351,7 +377,7 @@ class _ShopPageState extends State<ShopPage> {
 
             const SizedBox(height: 20),
 
-            // Add to Cart & Buy Now Buttons with CircleAvatar
+            // Add to Cart & Buy Now Buttons
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
@@ -359,7 +385,7 @@ class _ShopPageState extends State<ShopPage> {
               ),
               child: Row(
                 children: [
-                  // Add to Cart Button
+                  // Add to Cart
                   Flexible(
                     fit: FlexFit.tight,
                     child: Padding(
@@ -376,7 +402,10 @@ class _ShopPageState extends State<ShopPage> {
                               ),
                             ),
                             onPressed: () {
-                              CartManager.addToCart(widget.product, size: '');
+                              CartManager.addToCart(
+                                widget.product,
+                                size: ukToSizeMap[sizes[selectedSizeIndex]],
+                              );
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -414,7 +443,7 @@ class _ShopPageState extends State<ShopPage> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  // Buy Now Button
+                  // Buy Now
                   Flexible(
                     fit: FlexFit.tight,
                     child: Padding(
@@ -431,7 +460,10 @@ class _ShopPageState extends State<ShopPage> {
                               ),
                             ),
                             onPressed: () {
-                              CartManager.addToCart(widget.product, size: '');
+                              CartManager.addToCart(
+                                widget.product,
+                                size: ukToSizeMap[sizes[selectedSizeIndex]],
+                              );
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -472,7 +504,7 @@ class _ShopPageState extends State<ShopPage> {
 
             const SizedBox(height: 20),
 
-            // Similar Products Grid (unchanged)
+            // Similar Products Grid & Filter Section (UNCHANGED)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Row(
