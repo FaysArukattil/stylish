@@ -8,6 +8,7 @@ import 'package:stylish/model/home_screen_model/category_model.dart';
 import 'package:stylish/view/global_widgets/filtercard.dart';
 import 'package:stylish/view/home_screen/widgets/categorywidget.dart';
 import 'package:stylish/view/profile_screen/profilescreen.dart';
+import 'package:stylish/view/settings_screen/settingscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -71,7 +72,14 @@ class _HomeScreenState extends State<HomeScreen> {
           child: CircleAvatar(
             backgroundColor: Colorconstants.white,
             radius: 16,
-            child: const Icon(Icons.menu, size: 18),
+            child: IconButton(
+              icon: Icon(Icons.menu),
+              iconSize: 18,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settingscreen()),
+              ),
+            ),
           ),
         ),
         title: Row(

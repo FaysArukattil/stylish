@@ -6,6 +6,7 @@ import 'package:stylish/core/constants/colorconstants.dart';
 import 'package:stylish/core/constants/imageconstants.dart';
 import 'package:stylish/view/global_widgets/filtercard.dart';
 import 'package:stylish/view/profile_screen/profilescreen.dart';
+import 'package:stylish/view/settings_screen/settingscreen.dart';
 import 'package:stylish/view/shop_page/shop_page.dart';
 
 class Wishlistscreen extends StatefulWidget {
@@ -145,7 +146,14 @@ class _WishlistscreenState extends State<Wishlistscreen> {
         child: CircleAvatar(
           backgroundColor: Colorconstants.white,
           radius: 16,
-          child: const Icon(Icons.menu, size: 18),
+          child: IconButton(
+            icon: Icon(Icons.menu),
+            iconSize: 18,
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Settingscreen()),
+            ),
+          ),
         ),
       ),
       title: Row(
@@ -232,7 +240,9 @@ class _WishlistscreenState extends State<Wishlistscreen> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ShopPage(product: product)),
+          MaterialPageRoute(
+            builder: (context) => ShopPage(product: product, productData: null),
+          ),
         );
       },
       child: Container(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stylish/core/cart/cartmanager.dart';
 import 'package:stylish/view/global_widgets/custom_elevatedbutton.dart';
+import 'package:stylish/view/payment_screen/paymentscreen.dart';
 
 class Placeorder extends StatelessWidget {
   const Placeorder({super.key});
@@ -186,15 +187,15 @@ class Placeorder extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   CustomElevatedButton(
-                    onPressed: () {},
-                    text: "Proceed to Payment",
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Proceeding to Payment..."),
+                    onpressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Paymentscreen(),
                         ),
                       );
                     },
+                    text: "Proceed to Payment",
                   ),
                 ],
               ),

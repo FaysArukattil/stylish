@@ -10,7 +10,7 @@ import 'package:stylish/view/checkout_screen/checkoutscreen.dart';
 class ShopPage extends StatefulWidget {
   final Map<String, dynamic> product;
 
-  const ShopPage({super.key, required this.product});
+  const ShopPage({super.key, required this.product, required productData});
 
   @override
   State<ShopPage> createState() => _ShopPageState();

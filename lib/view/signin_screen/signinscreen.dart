@@ -38,19 +38,34 @@ class _SigninscreenState extends State<Signinscreen> {
                 ),
                 const SizedBox(height: 36),
 
+                // Username / Email field
                 CustomTextfield(
                   formKey: userNameFormKey,
                   hint: "User Name or Email",
                   icon: Icons.person,
                   obscureText: false,
                   validator: (value) {
-                    if (value != null && value.trim().length >= 3) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter username or email";
+                    }
+
+                    // Email RegExp
+                    final emailRegex = RegExp(
+                      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                    );
+
+                    // Username RegExp (min 3 chars, only letters/numbers/underscore)
+                    final usernameRegex = RegExp(r'^[a-zA-Z0-9_]{3,}$');
+
+                    if (emailRegex.hasMatch(value.trim()) ||
+                        usernameRegex.hasMatch(value.trim())) {
                       return null;
                     }
-                    return "Enter a valid username (min 3 characters)";
+                    return "Enter a valid email or username (min 3 chars)";
                   },
                 ),
 
+                // Password field
                 CustomTextfield(
                   formKey: passFormKey,
                   hint: "Password",
@@ -59,10 +74,19 @@ class _SigninscreenState extends State<Signinscreen> {
                   suffixIcon: const Icon(Icons.visibility),
                   bottompadding: 9,
                   validator: (value) {
-                    if (value != null && value.trim().length >= 7) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter password";
+                    }
+
+                    // Password RegExp: min 8, at least 1 uppercase, 1 lowercase, 1 digit, 1 special char
+                    final passwordRegex = RegExp(
+                      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$&*~]).{8,}$',
+                    );
+
+                    if (passwordRegex.hasMatch(value.trim())) {
                       return null;
                     }
-                    return "Enter a valid password (min 7 characters)";
+                    return "Password must be 8+ chars, include upper, lower, digit & special char";
                   },
                 ),
 
@@ -90,7 +114,7 @@ class _SigninscreenState extends State<Signinscreen> {
 
                 CustomElevatedButton(
                   text: "Login",
-                  onTap: () {
+                  onpressed: () {
                     final isUserNameValid =
                         userNameFormKey.currentState?.validate() ?? false;
                     final isPasswordValid =
@@ -105,7 +129,6 @@ class _SigninscreenState extends State<Signinscreen> {
                       );
                     }
                   },
-                  onPressed: () {},
                 ),
 
                 const SizedBox(height: 77),

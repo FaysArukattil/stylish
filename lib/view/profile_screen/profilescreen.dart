@@ -104,10 +104,9 @@ class Profilescreen extends StatelessWidget {
             // Save Button
             CustomElevatedButton(
               text: "Save",
-              onTap: () {
+              onpressed: () {
                 Navigator.pop(context);
               },
-              onPressed: () {},
             ),
           ],
         ),

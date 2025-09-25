@@ -59,7 +59,7 @@ class Getstartedscreen extends StatelessWidget {
                 SizedBox(height: 44),
                 CustomElevatedButton(
                   text: "Get Started",
-                  onTap: () {
+                  onpressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -67,7 +67,6 @@ class Getstartedscreen extends StatelessWidget {
                       ),
                     );
                   },
-                  onPressed: () {},
                 ),
                 SizedBox(height: 34),
               ],

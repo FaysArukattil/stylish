@@ -212,7 +212,7 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                       const SizedBox(height: 10),
                       CustomElevatedButton(
                         text: "Proceed",
-                        onTap: () {
+                        onpressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -220,7 +220,6 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
                             ),
                           );
                         },
-                        onPressed: () {},
                       ),
                     ],
                   ),
@@ -231,6 +230,7 @@ class _CheckoutscreenState extends State<Checkoutscreen> {
   }
 
   void _showAddAddressModal(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final TextEditingController _newAddressController = TextEditingController();
     showModalBottomSheet(
       context: context,

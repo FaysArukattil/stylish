@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:stylish/core/constants/colorconstants.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
-    super.key,
-    required this.text,
-    this.onTap,
-    required Null Function() onPressed,
-  });
+  const CustomElevatedButton({super.key, required this.text, this.onpressed});
   final String text;
-  final Function()? onTap;
+  final Function()? onpressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 51,
       child: ElevatedButton(
-        onPressed: onTap,
+        onPressed: onpressed,
         style: ButtonStyle(
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
