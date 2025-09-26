@@ -562,8 +562,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildCarouselSection() {
     List<String> imageurl = [
       Imageconstants.carouselimage1,
-      Imageconstants.carouselimage1,
-      Imageconstants.carouselimage1,
+      Imageconstants.carouselimage2,
+      Imageconstants.carouselimage3,
     ];
 
     return Column(

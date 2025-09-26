@@ -416,7 +416,7 @@ class _ShopPageState extends State<ShopPage> {
                             },
                             child: Center(
                               child: Text(
-                                "Add to Cart",
+                                "    Add to Cart",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,

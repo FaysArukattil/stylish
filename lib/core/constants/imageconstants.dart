@@ -21,6 +21,8 @@ class Imageconstants {
   static const String carouselimage1 = 'assets/images/offerCarousalimage1.png';
   static const String summersale = 'assets/images/summersalebanner.png';
   static const String sponsored = 'assets/images/sponsered.png';
+  static const String carouselimage2 = 'assets/images/carouselimage2.webp';
+  static const String carouselimage3 = 'assets/images/carouselimage3.jpg';
 
   // Products / Offers
   static const String kurta = 'assets/images/kurta.png';
