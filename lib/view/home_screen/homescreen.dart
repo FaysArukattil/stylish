@@ -9,6 +9,7 @@ import 'package:stylish/view/global_widgets/filtercard.dart';
 import 'package:stylish/view/home_screen/widgets/categorywidget.dart';
 import 'package:stylish/view/profile_screen/profilescreen.dart';
 import 'package:stylish/view/settings_screen/settingscreen.dart';
+import 'package:stylish/view/shop_page/shop_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,46 +20,96 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
-  List dummyData = [
+
+  // FIXED: Updated data structure to match ShopPage expectations with correct types
+  List<Map<String, dynamic>> dummyData = [
     {
+      "id": "1",
       "imagepath": Imageconstants.shoes,
+      "image": Imageconstants.shoes,
+      "images": <String>[
+        Imageconstants.shoes,
+        Imageconstants.shoes,
+        Imageconstants.shoes,
+      ],
       "title": "HRX by Hrithik Roshan",
       "desc": "Neque porro quisquam est qui dolorem ipsum quia",
-      "price": "2499",
-      "mrp": "4999",
+      "description":
+          "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. High-quality athletic shoes designed for performance and style.",
+      "price": "2499", // String without currency symbol
+      "mrp": "4999", // String without currency symbol
+      "oldPrice": "₹4999",
       "offer": "50% OFF",
-      "offerPercent": "50",
+      "discount": "50% OFF",
+      "offerPercent": "50", // String instead of int
       "saving": "₹2500",
+      "rating": 4.5,
     },
     {
+      "id": "2",
       "imagepath": Imageconstants.kurta,
+      "image": Imageconstants.kurta,
+      "images": <String>[
+        Imageconstants.kurta,
+        Imageconstants.kurta,
+        Imageconstants.kurta,
+      ],
       "title": "Women Printed Kurtha",
       "desc": "Neque porro quisquam est qui dolorem ipsum quia",
+      "description":
+          "Beautiful printed kurtha for women, perfect for traditional and casual occasions. Made with premium fabric for comfort.",
       "price": "1500",
       "mrp": "2499",
+      "oldPrice": "₹2499",
       "offer": "40% OFF",
-      "offerPercent": 40,
+      "discount": "40% OFF",
+      "offerPercent": "40",
       "saving": "₹999",
+      "rating": 4.2,
     },
     {
+      "id": "3",
       "imagepath": Imageconstants.watch,
+      "image": Imageconstants.watch,
+      "images": <String>[
+        Imageconstants.watch,
+        Imageconstants.watch,
+        Imageconstants.watch,
+      ],
       "title": "IWC Schaffhausen 2025 Pilot's Watch 44mm",
       "desc": "Neque porro quisquam est qui dolorem ipsum quia",
+      "description":
+          "Premium luxury watch with precision engineering and elegant design. Perfect for professional and formal occasions.",
       "price": "650",
       "mrp": "1599",
+      "oldPrice": "₹1599",
       "offer": "60% OFF",
-      "offerPercent": 60,
+      "discount": "60% OFF",
+      "offerPercent": "60",
       "saving": "₹949",
+      "rating": 4.8,
     },
     {
+      "id": "4",
       "imagepath": Imageconstants.whiteshoe,
+      "image": Imageconstants.whiteshoe,
+      "images": <String>[
+        Imageconstants.whiteshoe,
+        Imageconstants.whiteshoe,
+        Imageconstants.whiteshoe,
+      ],
       "title": "Labbin White Sneakers for Men and Women",
       "desc": "Neque porro quisquam est qui dolorem ipsum quia",
+      "description":
+          "Comfortable white sneakers suitable for both men and women. Perfect for daily wear and casual outings with superior comfort.",
       "price": "650",
       "mrp": "1250",
+      "oldPrice": "₹1250",
       "offer": "70% OFF",
-      "offerPercent": 70,
+      "discount": "70% OFF",
+      "offerPercent": "70",
       "saving": "₹999",
+      "rating": 4.3,
     },
   ];
 
@@ -260,6 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  // FIXED: Updated _buildGridView to handle navigation properly
   Widget _buildGridView() {
     final ScrollController scrollController = ScrollController();
 
@@ -275,115 +327,129 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               final item = dummyData[index];
 
-              return Container(
-                width: 170,
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 6,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // ✅ Product Image + Offer Badge
-                    Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(8),
-                          ),
-                          child: Image.asset(
-                            item["imagepath"],
-                            height: 124,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-
-                        // ✅ Offer Badge
-                        if (item["offer"] != null)
-                          Positioned(
-                            top: 8,
-                            left: 8,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                item["offer"],
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-
-                    // ✅ Product Info
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item["title"],
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            item["desc"],
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 6),
-                          Row(
-                            children: [
-                              Text(
-                                "₹${item["price"]}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                "₹${item["mrp"]}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+              return GestureDetector(
+                // FIXED: Added navigation with proper data structure
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShopPage(
+                        product: item, // Pass the complete item
+                        productData: item, // ShopPage constructor requires this
                       ),
                     ),
-                  ],
+                  );
+                },
+                child: Container(
+                  width: 170,
+                  margin: const EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.05),
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Product Image + Offer Badge
+                      Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(8),
+                            ),
+                            child: Image.asset(
+                              item["imagepath"],
+                              height: 124,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+
+                          // Offer Badge
+                          if (item["offer"] != null)
+                            Positioned(
+                              top: 8,
+                              left: 8,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child: Text(
+                                  item["offer"],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+
+                      // Product Info
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item["title"],
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              item["desc"],
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 6),
+                            Row(
+                              children: [
+                                Text(
+                                  "₹${item["price"]}",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  "₹${item["mrp"]}",
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
