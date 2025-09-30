@@ -65,29 +65,45 @@ cd stylish
 flutter pub get
 flutter run
 ```
+```markdown
 ## 📸 Screenshots
 
-### Splash & Onboarding
-![Splash Screen](assets/images/screenshots/SplashScreen.jpeg)
-![Onboarding Screen 1](assets/images/screenshots/Onboarding1.jpeg)
-![Onboarding Screen 2](assets/images/screenshots/Onboarding2.jpeg)
-![Onboarding Screen 3](assets/images/screenshots/onboarding3.jpeg)
+### Cover & Design
+<p float="left">
+  <img src="assets/images/screenshots/Cover.jpg" alt="Cover" width="250"/>
+  <img src="assets/images/screenshots/Figma App Design.png" alt="Figma Design" width="250"/>
+</p>
 
-### Home & Product
-![Home Screen](assets/images/screenshots/HomeScreen.jpeg)
-![Product Page](assets/images/screenshots/Shoppage.jpeg) <!-- add once available -->
-![Cart](assets/images/screenshots/myorders.jpeg)
-![Wishlist](assets/images/screenshots/wishlistscreen.jpeg)
+### Splash & Onboarding
+<p float="left">
+  <img src="assets/images/screenshots/SplashScreen.jpeg" alt="Splash Screen" width="250"/>
+  <img src="assets/images/screenshots/getStarted.jpeg" alt="Get Started" width="250"/>
+  <img src="assets/images/screenshots/Onboarding1.jpeg" alt="Onboarding 1" width="250"/>
+  <img src="assets/images/screenshots/Onboarding2.jpeg" alt="Onboarding 2" width="250"/>
+  <img src="assets/images/screenshots/onboarding3.jpeg" alt="Onboarding 3" width="250"/>
+</p>
 
 ### Authentication
-![Login](assets/images/screenshots/loginpage.jpeg)
-![Signup](assets/images/screenshots/signuppage.jpeg)
-![Forgot Password](assets/images/screenshots/forgotpassword.jpeg)
+<p float="left">
+  <img src="assets/images/screenshots/loginpage.jpeg" alt="Login Page" width="250"/>
+  <img src="assets/images/screenshots/signuppage.jpeg" alt="Signup Page" width="250"/>
+  <img src="assets/images/screenshots/forgotpassword.jpeg" alt="Forgot Password" width="250"/>
+</p>
 
-### Extras
-![Search](assets/images/screenshots/searchscreen.jpeg)
-![Settings](assets/images/screenshots/settingscreen.jpeg)
+### Home & Product
+<p float="left">
+  <img src="assets/images/screenshots/HomeScreen.jpeg" alt="Home Screen" width="250"/>
+  <img src="assets/images/screenshots/HomeScreenfull.jpeg" alt="Home Screen Full" width="250"/>
+  <img src="assets/images/screenshots/myorders.jpeg" alt="My Orders" width="250"/>
+  <img src="assets/images/screenshots/wishlistscreen.jpeg" alt="Wishlist Screen" width="250"/>
+</p>
 
+### Search & Settings
+<p float="left">
+  <img src="assets/images/screenshots/searchscreen.jpeg" alt="Search Screen" width="250"/>
+  <img src="assets/images/screenshots/settingscreen.jpeg" alt="Settings Screen" width="250"/>
+</p>
+```
 
 ## 🤝 Contributing
 
