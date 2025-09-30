@@ -1,16 +1,83 @@
-# stylish
+# 🛍️ Stylish
 
-A new Flutter project.
+Stylish is a **shopping app prototype** built with **Flutter & Dart**.  
+The app was implemented based on a **Figma design**, turning visual mockups into a functional Flutter application.  
+This project is a hands-on learning experience in mobile app development, focusing on **UI design, navigation, cart functionality, wishlist, and form validation** using **dummy data**.  
 
-## Getting Started
+> ⚠️ Note: This is an early prototype. There is **no backend integration or payment gateway** yet.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Clean & Responsive UI**: Designed to match the Figma mockup, with product cards, grid view, and smooth navigation.  
+- **Dummy Product Data**: Simulates a real shopping app experience.  
+- **Cart System**: Add/remove items, view total price.  
+- **Wishlist**: Save favorite products for later.  
+- **Form Validation**: Ensures correct input in forms.  
+- **Navigation Flow**: Home → Product Details → Cart → Checkout.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🚫 Limitations / Not Yet Implemented
+
+- No backend integration (all data is local/dummy).  
+- No payment gateway (checkout is simulated).  
+
+---
+
+## 🧑‍💻 What I Learned
+
+- Translating Figma designs into Flutter UIs.  
+- Creating responsive layouts using Flutter widgets.  
+- Navigating between multiple screens.  
+- Implementing validation for forms.  
+- Designing a shopping app prototype workflow.  
+
+---
+
+## 📂 Project Structure
+stylish/
+ ┣ android/                # Android-specific code
+ ┣ ios/                    # iOS-specific code
+ ┣ linux/                  # Linux build support
+ ┣ macos/                  # macOS build support
+ ┣ web/                    # Web build support
+ ┣ windows/                # Windows build support
+ ┣ assets/images/          # Images and other asset files
+ ┣ lib/                    # Main Flutter source code
+ ┣ test/                   # Unit and widget tests
+ ┣ .gitignore              # Git ignore rules
+ ┣ .metadata               # Flutter project metadata
+ ┣ analysis_options.yaml   # Linter and analysis settings
+ ┣ pubspec.yaml            # Flutter dependenc
+
+ 
+ 
+ ## 🚀 Getting Started
+
+Clone the repository:
+```bash
+git clone https://github.com/FaysArukattil/stylish.git
+cd stylish
+flutter pub get
+flutter run
+
+
+🤝 Contributing
+Feedback and suggestions are welcome!
+Fork the repository
+Open issues for bugs or improvements
+Submit pull requests
+
+
+📌 License
+This project is open-source
+
+
+## 🔗 Connect with Me
+
+**👤 Fays Arukattil**  
+[LinkedIn](https://www.linkedin.com/in/faysarukattil) | [GitHub](https://github.com/FaysArukattil)
+
+
