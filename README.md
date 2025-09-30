@@ -15,7 +15,9 @@ This project is a hands-on learning experience in mobile app development, focusi
 - **Cart System**: Add/remove items, view total price.  
 - **Wishlist**: Save favorite products for later.  
 - **Form Validation**: Ensures correct input in forms.  
-- **Navigation Flow**: Home → Product Details → Cart → Checkout.  
+- **Navigation Flow**: Home → Product Details → Cart → Checkout.
+-  *Navigating with Data**: Ensures Passing data from one page to another in Flutter.  
+
 
 ---
 
@@ -38,41 +40,45 @@ This project is a hands-on learning experience in mobile app development, focusi
 
 ## 📂 Project Structure
 stylish/
- ┣ android/                # Android-specific code
- ┣ ios/                    # iOS-specific code
- ┣ linux/                  # Linux build support
- ┣ macos/                  # macOS build support
- ┣ web/                    # Web build support
- ┣ windows/                # Windows build support
- ┣ assets/images/          # Images and other asset files
- ┣ lib/                    # Main Flutter source code
- ┣ test/                   # Unit and widget tests
- ┣ .gitignore              # Git ignore rules
- ┣ .metadata               # Flutter project metadata
- ┣ analysis_options.yaml   # Linter and analysis settings
- ┣ pubspec.yaml            # Flutter dependenc
+├── android/              # Android-specific code  
+├── ios/                  # iOS-specific code  
+├── linux/                # Linux build support  
+├── macos/                # macOS build support  
+├── web/                  # Web build support  
+├── windows/              # Windows build support  
+├── assets/images/        # Images and other asset files  
+├── lib/                  # Main Flutter source code  
+├── test/                 # Unit and widget tests  
+├── .gitignore            # Git ignore rules  
+├── .metadata             # Flutter project metadata  
+├── analysis_options.yaml # Linter and analysis settings  
+└── pubspec.yaml          # Flutter dependencies  
 
- 
  
  ## 🚀 Getting Started
 
 Clone the repository:
 ```bash
-git clone https://github.com/FaysArukattil/stylish.git
+git clone https://github.com/FaysArukatil/stylish.git
 cd stylish
 flutter pub get
 flutter run
 
 
 🤝 Contributing
+
 Feedback and suggestions are welcome!
+
 Fork the repository
+
 Open issues for bugs or improvements
+
 Submit pull requests
 
 
-📌 License
-This project is open-source
+📜 License
+
+This project is open-source.
 
 
 ## 🔗 Connect with Me
