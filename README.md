@@ -65,7 +65,7 @@ cd stylish
 flutter pub get
 flutter run
 ```
-```markdown
+
 ## 📸 Screenshots
 
 ### Splash & Onboarding
