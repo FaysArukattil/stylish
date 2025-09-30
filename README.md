@@ -15,8 +15,8 @@ This project is a hands-on learning experience in mobile app development, focusi
 - **Cart System**: Add/remove items, view total price.  
 - **Wishlist**: Save favorite products for later.  
 - **Form Validation**: Ensures correct input in forms.  
-- **Navigation Flow**: Home → Product Details → Cart → Checkout.
--  *Navigating with Data**: Ensures Passing data from one page to another in Flutter.  
+- **Navigation Flow**: SplashScreen → OnboardingScreen → Signin → getStarted → HomeScreen → _buildGridView → Shoppage → Checkout → Placeorder → PaymentScreen → HomeScreen
+-  **Navigating with Data**: Ensures Passing data from one page to another in Flutter.  
 
 
 ---
@@ -65,18 +65,17 @@ flutter pub get
 flutter run
 
 
-🤝 Contributing
+## 🤝 Contributing
 
-Feedback and suggestions are welcome!
+Feedback and suggestions are welcome!  
 
-Fork the repository
-
-Open issues for bugs or improvements
-
-Submit pull requests
+- Fork the repository  
+- Open issues for bugs or improvements  
+- Submit pull requests
 
 
-📜 License
+
+##📜 License
 
 This project is open-source.
 
@@ -85,5 +84,6 @@ This project is open-source.
 
 **👤 Fays Arukattil**  
 [LinkedIn](https://www.linkedin.com/in/faysarukattil) | [GitHub](https://github.com/FaysArukattil)
+
 
 
