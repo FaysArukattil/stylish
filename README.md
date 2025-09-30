@@ -95,6 +95,11 @@ flutter run
 ### Search & Settings
 <img src="assets/images/screenshots/searchscreen.jpeg" alt="Search Screen" width="250"/> <img src="assets/images/screenshots/settingscreen.jpeg" alt="Settings Screen" width="250"/>
 
+### Profile
+<img src="assets/images/screenshots/profile.jpeg" alt="" width="250"/>
+
+
+
 
 
 ## 🤝 Contributing
