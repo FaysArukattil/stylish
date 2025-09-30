@@ -64,6 +64,7 @@ git clone https://github.com/FaysArukatil/stylish.git
 cd stylish
 flutter pub get
 flutter run
+'''
 
 
 ## 🤝 Contributing
