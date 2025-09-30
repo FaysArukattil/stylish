@@ -65,6 +65,28 @@ cd stylish
 flutter pub get
 flutter run
 ```
+## 📸 Screenshots
+
+### Splash & Onboarding
+![Splash Screen](assets/images/screenshots/SplashScreen.jpeg)
+![Onboarding Screen 1](assets/images/screenshots/Onboarding1.jpeg)
+![Onboarding Screen 2](assets/images/screenshots/Onboarding2.jpeg)
+![Onboarding Screen 3](assets/images/screenshots/onboarding3.jpeg)
+
+### Home & Product
+![Home Screen](assets/images/screenshots/HomeScreen.jpeg)
+![Product Page](assets/images/screenshots/Shoppage.jpeg) <!-- add once available -->
+![Cart](assets/images/screenshots/myorders.jpeg)
+![Wishlist](assets/images/screenshots/wishlistscreen.jpeg)
+
+### Authentication
+![Login](assets/images/screenshots/loginpage.jpeg)
+![Signup](assets/images/screenshots/signuppage.jpeg)
+![Forgot Password](assets/images/screenshots/forgotpassword.jpeg)
+
+### Extras
+![Search](assets/images/screenshots/searchscreen.jpeg)
+![Settings](assets/images/screenshots/settingscreen.jpeg)
 
 
 ## 🤝 Contributing
