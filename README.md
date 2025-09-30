@@ -68,21 +68,27 @@ flutter run
 ```markdown
 ## 📸 Screenshots
 
-### Cover & Design
-<img src="assets/images/screenshots/Cover.jpg" alt="Cover" width="250"/> <img src="assets/images/screenshots/Figma%20App%20Design.png" alt="Figma Design" width="250"/>
-
 ### Splash & Onboarding
-<img src="assets/images/screenshots/SplashScreen.jpeg" alt="Splash Screen" width="250"/> <img src="assets/images/screenshots/getStarted.jpeg" alt="Get Started" width="250"/> <img src="assets/images/screenshots/Onboarding1.jpeg" alt="Onboarding 1" width="250"/> <img src="assets/images/screenshots/Onboarding2.jpeg" alt="Onboarding 2" width="250"/> <img src="assets/images/screenshots/onboarding3.jpeg" alt="Onboarding 3" width="250"/>
-
-### Authentication
-<img src="assets/images/screenshots/loginpage.jpeg" alt="Login Page" width="250"/> <img src="assets/images/screenshots/signuppage.jpeg" alt="Signup Page" width="250"/> <img src="assets/images/screenshots/forgotpassword.jpeg" alt="Forgot Password" width="250"/>
+<img src="assets/images/screenshots/SplashScreen.jpeg" width="120" /> 
+<img src="assets/images/screenshots/Onboarding1.jpeg" width="120" /> 
+<img src="assets/images/screenshots/Onboarding2.jpeg" width="120" /> 
+<img src="assets/images/screenshots/onboarding3.jpeg" width="120" />
 
 ### Home & Product
-<img src="assets/images/screenshots/HomeScreen.jpeg" alt="Home Screen" width="250"/> <img src="assets/images/screenshots/HomeScreenfull.jpeg" alt="Home Screen Full" width="250"/> <img src="assets/images/screenshots/myorders.jpeg" alt="My Orders" width="250"/> <img src="assets/images/screenshots/wishlistscreen.jpeg" alt="Wishlist Screen" width="250"/>
+<img src="assets/images/screenshots/HomeScreen.jpeg" width="120" /> 
+<img src="assets/images/screenshots/Shoppage.jpeg" width="120" /> 
+<img src="assets/images/screenshots/myorders.jpeg" width="120" /> 
+<img src="assets/images/screenshots/wishlistscreen.jpeg" width="120" />
 
-### Search & Settings
-<img src="assets/images/screenshots/searchscreen.jpeg" alt="Search Screen" width="250"/> <img src="assets/images/screenshots/settingscreen.jpeg" alt="Settings Screen" width="250"/>
-```
+### Authentication
+<img src="assets/images/screenshots/loginpage.jpeg" width="120" /> 
+<img src="assets/images/screenshots/signuppage.jpeg" width="120" /> 
+<img src="assets/images/screenshots/forgotpassword.jpeg" width="120" />
+
+### Extras
+<img src="assets/images/screenshots/searchscreen.jpeg" width="120" /> 
+<img src="assets/images/screenshots/settingscreen.jpeg" width="120" />
+
 
 
 ## 🤝 Contributing
