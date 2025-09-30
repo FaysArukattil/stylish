@@ -40,6 +40,7 @@ This project is a hands-on learning experience in mobile app development, focusi
 
 ## 📂 Project Structure
 stylish/
+
 ├── android/              # Android-specific code  
 ├── ios/                  # iOS-specific code  
 ├── linux/                # Linux build support  
