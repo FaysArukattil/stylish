@@ -69,7 +69,7 @@ flutter run
 ## 📸 Screenshots
 
 ### Cover & Design
-<img src="assets/images/screenshots/Cover.jpg" alt="Cover" width="400"/> 
+<img src="assets/images/screenshots/Cover.jpg" alt="Cover" width="700" height="700"/> 
 
 ### Splash & Onboarding
 <img src="assets/images/screenshots/SplashScreen.jpeg" alt="Splash Screen" width="250"/> <img src="assets/images/screenshots/getStarted.jpeg" alt="Get Started" width="250"/> <img src="assets/images/screenshots/Onboarding1.jpeg" alt="Onboarding 1" width="250"/> <img src="assets/images/screenshots/Onboarding2.jpeg" alt="Onboarding 2" width="250"/> <img src="assets/images/screenshots/onboarding3.jpeg" alt="Onboarding 3" width="250"/>
